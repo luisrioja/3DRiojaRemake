@@ -1,0 +1,86 @@
+/* Global CSS — Imports reset + theme, applies Win95 look globally */
+
+@import './reset.css';
+@import './win95-theme.css';
+
+/* ── Base body styles ── */
+html, body {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  background-color: var(--win95-desktop-teal);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  image-rendering: pixelated;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: var(--win95-highlight);
+  color: var(--win95-highlight-text);
+}
+
+/* ── Focus outline ── */
+:focus-visible {
+  outline: 1px dotted var(--win95-black);
+  outline-offset: -1px;
+}
+
+/* ── Links ── */
+a {
+  color: var(--win95-title-blue);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── Win95 scrollbar styles ── */
+
+/* Webkit-based browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: var(--win95-scrollbar-size);
+  height: var(--win95-scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background: repeating-conic-gradient(
+    var(--win95-gray) 0% 25%,
+    var(--win95-white) 0% 50%
+  ) 50% / 2px 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--win95-button-face);
+  box-shadow: var(--win95-border-button);
+}
+
+::-webkit-scrollbar-thumb:active {
+  box-shadow: var(--win95-border-button-pressed);
+}
+
+::-webkit-scrollbar-button {
+  display: block;
+  width: var(--win95-scrollbar-size);
+  height: var(--win95-scrollbar-size);
+  background-color: var(--win95-button-face);
+  box-shadow: var(--win95-border-button);
+}
+
+::-webkit-scrollbar-button:active {
+  box-shadow: var(--win95-border-button-pressed);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--win95-gray);
+}
+
+/* Firefox scrollbar (limited styling) */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--win95-button-face) var(--win95-gray);
+}

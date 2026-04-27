@@ -1,0 +1,77 @@
+/* Win95 Theme — CSS custom properties and base theme tokens */
+
+:root {
+  /* ── Color palette ── */
+  --win95-gray: #C0C0C0;
+  --win95-dark-gray: #808080;
+  --win95-light-gray: #DFDFDF;
+  --win95-white: #FFFFFF;
+  --win95-black: #000000;
+  --win95-title-blue: #000080;
+  --win95-title-blue-inactive: #808080;
+  --win95-desktop-teal: #008080;
+  --win95-highlight: #000080;
+  --win95-highlight-text: #FFFFFF;
+  --win95-button-face: #C0C0C0;
+  --win95-button-text: #000000;
+  --win95-window-bg: #C0C0C0;
+  --win95-window-text: #000000;
+  --win95-field-bg: #FFFFFF;
+  --win95-field-text: #000000;
+
+  /* ── Typography ── */
+  --win95-font-system: "MS Sans Serif", "Microsoft Sans Serif", Arial, Helvetica, sans-serif;
+  --win95-font-mono: "Fixedsys", "Courier New", Courier, monospace;
+  --win95-font-size-base: 11px;
+  --win95-font-size-sm: 10px;
+  --win95-font-size-lg: 13px;
+  --win95-font-size-title: 11px;
+
+  /* ── Borders — 3D beveled effect ── */
+  --win95-border-raised:
+    inset -1px -1px 0 0 var(--win95-black),
+    inset 1px 1px 0 0 var(--win95-white),
+    inset -2px -2px 0 0 var(--win95-dark-gray),
+    inset 2px 2px 0 0 var(--win95-light-gray);
+
+  --win95-border-sunken:
+    inset -1px -1px 0 0 var(--win95-white),
+    inset 1px 1px 0 0 var(--win95-dark-gray),
+    inset -2px -2px 0 0 var(--win95-light-gray),
+    inset 2px 2px 0 0 var(--win95-black);
+
+  --win95-border-button:
+    inset -1px -1px 0 0 var(--win95-black),
+    inset 1px 1px 0 0 var(--win95-white),
+    inset -2px -2px 0 0 var(--win95-dark-gray),
+    inset 2px 2px 0 0 var(--win95-light-gray);
+
+  --win95-border-button-pressed:
+    inset -1px -1px 0 0 var(--win95-white),
+    inset 1px 1px 0 0 var(--win95-black),
+    inset -2px -2px 0 0 var(--win95-light-gray),
+    inset 2px 2px 0 0 var(--win95-dark-gray);
+
+  --win95-border-field:
+    inset -1px -1px 0 0 var(--win95-light-gray),
+    inset 1px 1px 0 0 var(--win95-dark-gray),
+    inset -2px -2px 0 0 var(--win95-white),
+    inset 2px 2px 0 0 var(--win95-black);
+
+  /* ── Spacing ── */
+  --win95-spacing-xs: 2px;
+  --win95-spacing-sm: 4px;
+  --win95-spacing-md: 8px;
+  --win95-spacing-lg: 12px;
+  --win95-spacing-xl: 16px;
+
+  /* ── Window title bar ── */
+  --win95-titlebar-height: 18px;
+  --win95-titlebar-button-size: 16px;
+
+  /* ── Taskbar ── */
+  --win95-taskbar-height: 28px;
+
+  /* ── Scrollbar ── */
+  --win95-scrollbar-size: 16px;
+}
