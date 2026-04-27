@@ -2,6 +2,7 @@
 
 @import './reset.css';
 @import './win95-theme.css';
+@import './responsive.css';
 
 /* ── Base body styles ── */
 html, body {

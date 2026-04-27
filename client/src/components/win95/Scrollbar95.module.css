@@ -1,0 +1,9 @@
+/* Scrollbar95 — Win95 styled scrollable container */
+
+.scrollable {
+  overflow: auto;
+  box-shadow: var(--win95-border-field);
+  background-color: var(--win95-field-bg);
+  color: var(--win95-field-text);
+  box-sizing: border-box;
+}

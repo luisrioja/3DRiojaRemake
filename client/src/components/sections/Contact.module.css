@@ -1,0 +1,127 @@
+/* Contact — Windows 95 styled contact section */
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-lg);
+}
+
+.subsection {
+  padding: var(--win95-spacing-xl) var(--win95-spacing-lg);
+}
+
+.heading {
+  font-family: var(--win95-font-system);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--win95-title-blue);
+  margin: 0 0 var(--win95-spacing-md) 0;
+}
+
+.subheading {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  font-weight: bold;
+  color: var(--win95-window-text);
+  margin: 0 0 var(--win95-spacing-sm) 0;
+}
+
+.text {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  color: var(--win95-window-text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.emailLink {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  color: var(--win95-title-blue);
+  text-decoration: underline;
+}
+
+.emailLink:hover {
+  color: var(--win95-highlight);
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--win95-spacing-lg);
+  margin-top: var(--win95-spacing-md);
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  color: var(--win95-title-blue);
+  text-decoration: underline;
+}
+
+.socialLink:hover {
+  color: var(--win95-highlight);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-md);
+  margin-top: var(--win95-spacing-md);
+}
+
+.inputRow {
+  display: flex;
+  gap: var(--win95-spacing-md);
+  align-items: center;
+}
+
+.emailInput {
+  flex: 1;
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  background: var(--win95-field-bg);
+  color: var(--win95-field-text);
+  border: none;
+  box-shadow: var(--win95-border-sunken);
+  outline: none;
+}
+
+.successMessage {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  color: #008000;
+  margin: 0;
+}
+
+.errorMessage {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  color: #ff0000;
+  margin: 0;
+}
+
+/* ── Mobile: stack form elements ── */
+@media (max-width: 767px) {
+  .inputRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .subsection {
+    padding: var(--win95-spacing-lg) var(--win95-spacing-md);
+  }
+}
+
+/* ── Extra small: reduce padding ── */
+@media (max-width: 374px) {
+  .subsection {
+    padding: var(--win95-spacing-md) var(--win95-spacing-sm);
+  }
+
+  .socialLinks {
+    flex-direction: column;
+    gap: var(--win95-spacing-md);
+  }
+}

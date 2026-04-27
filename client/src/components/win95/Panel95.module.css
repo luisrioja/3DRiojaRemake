@@ -1,0 +1,25 @@
+/* Panel95 — Windows 95 styled container panel */
+
+.panel {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  background-color: var(--win95-window-bg);
+  padding: var(--win95-spacing-md);
+  box-sizing: border-box;
+}
+
+/* ── Raised variant: outward 3D bevel ── */
+.raised {
+  box-shadow: var(--win95-border-raised);
+}
+
+/* ── Sunken variant: inward 3D bevel ── */
+.sunken {
+  box-shadow: var(--win95-border-sunken);
+}
+
+/* ── Flat variant: no box-shadow ── */
+.flat {
+  box-shadow: none;
+}

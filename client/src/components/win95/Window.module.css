@@ -1,0 +1,145 @@
+/* Window — Windows 95 styled window */
+
+.window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--win95-window-bg);
+  box-shadow: var(--win95-border-raised);
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.windowMaximized {
+  position: absolute;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.windowMinimized {
+  display: none;
+}
+
+/* ── Title bar ── */
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  height: var(--win95-titlebar-height);
+  padding: 0 var(--win95-spacing-xs);
+  gap: var(--win95-spacing-xs);
+  user-select: none;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.titleBarFocused {
+  background: linear-gradient(90deg, var(--win95-title-blue), #1084d0);
+}
+
+.titleBarUnfocused {
+  background: linear-gradient(90deg, var(--win95-title-blue-inactive), #b5b5b5);
+}
+
+.titleIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.titleText {
+  flex: 1;
+  color: var(--win95-white);
+  font-size: var(--win95-font-size-title);
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: var(--win95-titlebar-height);
+}
+
+/* ── Title bar buttons ── */
+
+.titleButtons {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.titleButton {
+  width: var(--win95-titlebar-button-size);
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--win95-button-face);
+  box-shadow: var(--win95-border-button);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--win95-font-system);
+  font-size: 9px;
+  line-height: 1;
+  color: var(--win95-black);
+  box-sizing: border-box;
+}
+
+.titleButton:active {
+  box-shadow: var(--win95-border-button-pressed);
+}
+
+.titleButton:focus-visible {
+  outline: 1px dotted var(--win95-black);
+  outline-offset: -3px;
+}
+
+/* ── Window content ── */
+
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: var(--win95-spacing-xs);
+  min-height: 0;
+}
+
+/* ── Mobile: windows go full-width ── */
+@media (max-width: 767px) {
+  .window {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0;
+    max-height: calc(100vh - var(--win95-taskbar-height));
+  }
+
+  .content {
+    padding: var(--win95-spacing-sm);
+  }
+}
+
+/* ── Extra small: tighter title bar ── */
+@media (max-width: 374px) {
+  .titleBar {
+    height: 16px;
+  }
+
+  .titleText {
+    font-size: 10px;
+  }
+
+  .titleButton {
+    width: 14px;
+    height: 12px;
+    font-size: 8px;
+  }
+
+  .content {
+    padding: var(--win95-spacing-xs);
+  }
+}

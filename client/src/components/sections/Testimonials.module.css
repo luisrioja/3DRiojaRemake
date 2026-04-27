@@ -1,0 +1,124 @@
+/* Testimonials — Windows 95 styled testimonials section */
+
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-lg);
+}
+
+.heading {
+  font-family: var(--win95-font-system);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--win95-title-blue);
+  margin: 0 0 var(--win95-spacing-md) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--win95-spacing-lg);
+}
+
+.card {
+  padding: var(--win95-spacing-xl) var(--win95-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-md);
+}
+
+.author {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  font-weight: bold;
+  color: var(--win95-window-text);
+  margin: 0;
+}
+
+.text {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  margin: 0;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.stars {
+  font-family: var(--win95-font-system);
+  font-size: 14px;
+  color: var(--win95-window-text);
+  letter-spacing: 1px;
+}
+
+.date {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-sm);
+  color: var(--win95-dark-gray);
+  margin: 0;
+}
+
+.mapsLink {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-title-blue);
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.mapsLink:hover {
+  color: var(--win95-highlight-text);
+  background-color: var(--win95-highlight);
+}
+
+.cachedMessage {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-dark-gray);
+  text-align: center;
+  padding: var(--win95-spacing-md);
+  font-style: italic;
+}
+
+.loading {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  text-align: center;
+  padding: var(--win95-spacing-xl);
+}
+
+.error {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: #ff0000;
+  text-align: center;
+  padding: var(--win95-spacing-xl);
+}
+
+/* ── Mobile: single column ── */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: var(--win95-spacing-lg) var(--win95-spacing-md);
+  }
+}
+
+/* ── Extra small: reduce padding ── */
+@media (max-width: 374px) {
+  .card {
+    padding: var(--win95-spacing-md) var(--win95-spacing-sm);
+  }
+}
+
+/* ── Ultra-wide: limit grid columns ── */
+@media (min-width: 2560px) {
+  .grid {
+    max-width: 1600px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

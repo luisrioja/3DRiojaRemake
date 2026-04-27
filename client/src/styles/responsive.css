@@ -1,0 +1,46 @@
+/* Responsive — Global responsive adjustments across all breakpoints */
+
+/* ── Extra small devices (320px) ── */
+@media (max-width: 374px) {
+  :root {
+    --win95-font-size-base: 10px;
+    --win95-font-size-sm: 9px;
+    --win95-font-size-lg: 11px;
+    --win95-spacing-xl: 8px;
+    --win95-spacing-lg: 6px;
+  }
+
+  html, body {
+    font-size: 10px;
+  }
+}
+
+/* ── Small mobile (375px–767px) ── */
+@media (min-width: 375px) and (max-width: 767px) {
+  :root {
+    --win95-spacing-xl: 12px;
+  }
+}
+
+/* ── Tablet / small desktop (768px–1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --win95-spacing-xl: 16px;
+  }
+}
+
+/* ── Large desktop (1024px+) ── */
+@media (min-width: 1024px) {
+  :root {
+    --win95-font-size-base: 12px;
+    --win95-font-size-lg: 14px;
+  }
+}
+
+/* ── Ultra-wide (2560px+): constrain content width ── */
+@media (min-width: 2560px) {
+  #root {
+    max-width: 2560px;
+    margin: 0 auto;
+  }
+}

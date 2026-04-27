@@ -1,0 +1,107 @@
+/* AdminDashboard — Win95 styled admin panel */
+
+.container {
+  min-height: 100vh;
+  background-color: var(--win95-desktop-teal);
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.window {
+  margin: var(--win95-spacing-xl);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleBar {
+  background: var(--win95-title-blue);
+  color: var(--win95-highlight-text);
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  font-weight: bold;
+  font-size: var(--win95-font-size-title);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: var(--win95-spacing-sm);
+}
+
+.titleIcon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--win95-spacing-sm);
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  background-color: var(--win95-gray);
+  border-bottom: 1px solid var(--win95-dark-gray);
+}
+
+.navButton {
+  position: relative;
+}
+
+.navButtonActive {
+  font-weight: bold;
+}
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background-color: var(--win95-dark-gray);
+  box-shadow: 1px 0 0 var(--win95-white);
+  margin: 0 var(--win95-spacing-sm);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  padding: var(--win95-spacing-xl);
+  background-color: var(--win95-gray);
+  overflow: auto;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--win95-dark-gray);
+  font-size: var(--win95-font-size-lg);
+}
+
+/* ── Mobile: reduce margins ── */
+@media (max-width: 767px) {
+  .window {
+    margin: var(--win95-spacing-sm);
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+    gap: var(--win95-spacing-xs);
+  }
+
+  .content {
+    padding: var(--win95-spacing-md);
+  }
+}
+
+/* ── Extra small ── */
+@media (max-width: 374px) {
+  .window {
+    margin: var(--win95-spacing-xs);
+  }
+
+  .content {
+    padding: var(--win95-spacing-sm);
+  }
+}

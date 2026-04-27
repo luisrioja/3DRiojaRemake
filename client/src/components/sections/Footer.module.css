@@ -1,0 +1,13 @@
+/* Footer — Windows 95 styled footer section */
+
+.footer {
+  padding: var(--win95-spacing-lg) var(--win95-spacing-xl);
+  text-align: center;
+}
+
+.text {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  margin: 0;
+}

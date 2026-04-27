@@ -1,0 +1,156 @@
+/* ClassicMode — Windows 95 classic navigation layout */
+
+/* ── Top navigation bar (Win95 menu bar) ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  background-color: var(--win95-gray);
+  box-shadow: var(--win95-border-raised);
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  padding: var(--win95-spacing-xs) var(--win95-spacing-sm);
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.navBrand {
+  font-weight: bold;
+  color: var(--win95-black);
+  margin-right: var(--win95-spacing-lg);
+  white-space: nowrap;
+  font-size: var(--win95-font-size-base);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.navLink {
+  padding: var(--win95-spacing-xs) var(--win95-spacing-md);
+  color: var(--win95-black);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  background-color: var(--win95-highlight);
+  color: var(--win95-highlight-text);
+}
+
+.modeSwitchBtn {
+  margin-left: auto;
+}
+
+/* ── Hamburger button (mobile) ── */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: var(--win95-spacing-xs) var(--win95-spacing-sm);
+  font-family: var(--win95-font-system);
+  color: var(--win95-black);
+  box-shadow: var(--win95-border-button);
+  background-color: var(--win95-button-face);
+  line-height: 1;
+}
+
+.hamburger:active {
+  box-shadow: var(--win95-border-button-pressed);
+}
+
+/* ── Mobile dropdown menu ── */
+.mobileMenu {
+  display: none;
+}
+
+/* ── Main content area ── */
+.content {
+  margin-top: 28px;
+  padding: var(--win95-spacing-md);
+  background-color: var(--win95-desktop-teal);
+  min-height: calc(100vh - 28px);
+}
+
+/* ── Section wrapper (window-like panel) ── */
+.section {
+  margin-bottom: var(--win95-spacing-xl);
+}
+
+.sectionTitleBar {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, var(--win95-title-blue), #1084d0);
+  color: var(--win95-white);
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-title);
+  font-weight: bold;
+  padding: var(--win95-spacing-xs) var(--win95-spacing-sm);
+  user-select: none;
+}
+
+.sectionIcon {
+  margin-right: var(--win95-spacing-sm);
+}
+
+.sectionBody {
+  padding: var(--win95-spacing-lg);
+  min-height: 120px;
+}
+
+/* ── Mobile styles ── */
+@media (max-width: 767px) {
+  .navLinks {
+    display: none;
+  }
+
+  .modeSwitchBtn {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 28px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: var(--win95-gray);
+    box-shadow: var(--win95-border-raised);
+    padding: var(--win95-spacing-xs) 0;
+  }
+
+  .mobileMenu .navLink {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  }
+
+  .content {
+    padding: var(--win95-spacing-sm);
+  }
+}

@@ -1,0 +1,121 @@
+/* Taskbar — Windows 95 styled taskbar */
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--win95-taskbar-height);
+  background-color: var(--win95-button-face);
+  box-shadow: inset 0 1px 0 0 var(--win95-white), inset 0 2px 0 0 var(--win95-light-gray);
+  display: flex;
+  align-items: center;
+  padding: 2px 2px;
+  gap: 2px;
+  z-index: 9999;
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+}
+
+/* ── Start button area ── */
+.startArea {
+  flex-shrink: 0;
+}
+
+/* ── Divider between start and window list ── */
+.divider {
+  width: 2px;
+  height: 22px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--win95-dark-gray);
+  border-right: 1px solid var(--win95-white);
+  margin: 0 1px;
+}
+
+/* ── Window list area ── */
+.windowList {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ── Individual window button ── */
+.windowButton {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-button-text);
+  background-color: var(--win95-button-face);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  height: 22px;
+  min-width: 0;
+  max-width: 160px;
+  box-shadow: var(--win95-border-button);
+  user-select: none;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.windowButton:active:not(:disabled) {
+  box-shadow: var(--win95-border-button-pressed);
+}
+
+.windowButton:focus-visible {
+  outline: 1px dotted var(--win95-black);
+  outline-offset: -4px;
+}
+
+/* ── Active/focused window button appears pressed ── */
+.windowButtonActive {
+  box-shadow: var(--win95-border-button-pressed);
+  background: repeating-conic-gradient(var(--win95-button-face) 0% 25%, var(--win95-white) 0% 50%) 0 0 / 2px 2px;
+}
+
+/* ── Window button label truncation ── */
+.windowButtonLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Clock / tray area ── */
+.tray {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  height: 22px;
+  box-shadow: var(--win95-border-sunken);
+  font-size: var(--win95-font-size-sm);
+  margin-left: auto;
+}
+
+/* ── Mobile: max 3 window buttons with horizontal scroll ── */
+@media (max-width: 767px) {
+  .windowList {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .windowList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .windowButton {
+    max-width: 80px;
+  }
+
+  .windowButton:nth-child(n + 4) {
+    /* Still rendered but scrollable — the container clips to ~3 visible */
+  }
+}

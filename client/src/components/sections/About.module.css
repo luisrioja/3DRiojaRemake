@@ -1,0 +1,27 @@
+/* About — Windows 95 styled about section */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-lg);
+}
+
+.subsection {
+  padding: var(--win95-spacing-xl) var(--win95-spacing-lg);
+}
+
+.heading {
+  font-family: var(--win95-font-system);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--win95-title-blue);
+  margin: 0 0 var(--win95-spacing-md) 0;
+}
+
+.text {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  color: var(--win95-window-text);
+  margin: 0;
+  line-height: 1.5;
+}

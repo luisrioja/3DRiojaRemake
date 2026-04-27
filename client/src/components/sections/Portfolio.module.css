@@ -1,0 +1,184 @@
+/* Portfolio — Windows 95 styled gallery section */
+
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-lg);
+}
+
+.heading {
+  font-family: var(--win95-font-system);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--win95-title-blue);
+  margin: 0 0 var(--win95-spacing-md) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--win95-spacing-lg);
+}
+
+.card {
+  padding: var(--win95-spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-sm);
+  cursor: pointer;
+  background: var(--win95-button-face);
+}
+
+.card:hover {
+  background: var(--win95-highlight);
+  color: var(--win95-highlight-text);
+}
+
+.card:hover .cardTitle,
+.card:hover .cardDescription {
+  color: var(--win95-highlight-text);
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  box-shadow: var(--win95-border-sunken);
+  background: var(--win95-field-bg);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardTitle {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-lg);
+  font-weight: bold;
+  color: var(--win95-window-text);
+  margin: 0;
+}
+
+.cardDescription {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.loading {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  text-align: center;
+  padding: var(--win95-spacing-xl);
+}
+
+.error {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: #ff0000;
+  text-align: center;
+  padding: var(--win95-spacing-xl);
+}
+
+/* Detail overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.detail {
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-md);
+  padding: var(--win95-spacing-sm);
+  background: var(--win95-button-face);
+}
+
+.detailTitleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--win95-title-blue);
+  color: var(--win95-white);
+  padding: var(--win95-spacing-xs) var(--win95-spacing-sm);
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-title);
+  font-weight: bold;
+}
+
+.detailImageWrapper {
+  width: 100%;
+  box-shadow: var(--win95-border-sunken);
+  background: var(--win95-field-bg);
+}
+
+.detailImage {
+  width: 100%;
+  display: block;
+}
+
+.detailDescription {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-window-text);
+  margin: 0;
+  line-height: 1.5;
+  padding: var(--win95-spacing-sm);
+}
+
+/* ── Mobile: two-column grid ── */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--win95-spacing-md);
+  }
+
+  .detail {
+    width: 95%;
+  }
+}
+
+/* ── Extra small: single column ── */
+@media (max-width: 374px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: var(--win95-spacing-xs);
+  }
+}
+
+/* ── Ultra-wide: limit grid columns ── */
+@media (min-width: 2560px) {
+  .grid {
+    max-width: 1600px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .detail {
+    max-width: 800px;
+  }
+}

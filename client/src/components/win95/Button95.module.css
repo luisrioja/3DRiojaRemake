@@ -1,0 +1,107 @@
+/* Button95 — Windows 95 styled button */
+
+.button {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  color: var(--win95-button-text);
+  background-color: var(--win95-button-face);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 75px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ── Sizes ── */
+.sm {
+  padding: 2px 6px;
+  font-size: var(--win95-font-size-sm);
+  min-width: 50px;
+}
+
+.md {
+  padding: 4px 12px;
+}
+
+.lg {
+  padding: 6px 16px;
+  font-size: var(--win95-font-size-lg);
+}
+
+/* ── Default variant: raised 3D bevel ── */
+.default {
+  box-shadow: var(--win95-border-button);
+}
+
+.default:hover {
+  box-shadow: var(--win95-border-button);
+}
+
+.default:active:not(:disabled) {
+  box-shadow: var(--win95-border-button-pressed);
+  padding-top: 5px;
+  padding-left: 13px;
+  padding-bottom: 3px;
+  padding-right: 11px;
+}
+
+.default.sm:active:not(:disabled) {
+  padding-top: 3px;
+  padding-left: 7px;
+  padding-bottom: 1px;
+  padding-right: 5px;
+}
+
+.default.lg:active:not(:disabled) {
+  padding-top: 7px;
+  padding-left: 17px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+}
+
+/* ── Flat variant: no border until hover ── */
+.flat {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.flat:hover:not(:disabled) {
+  box-shadow: var(--win95-border-button);
+  background-color: var(--win95-button-face);
+}
+
+.flat:active:not(:disabled) {
+  box-shadow: var(--win95-border-button-pressed);
+  background-color: var(--win95-button-face);
+}
+
+/* ── Start variant: Win95 Start button style ── */
+.start {
+  box-shadow: var(--win95-border-button);
+  font-weight: bold;
+  padding: 4px 8px;
+  min-width: auto;
+}
+
+.start:active:not(:disabled) {
+  box-shadow: var(--win95-border-button-pressed);
+}
+
+/* ── Disabled state ── */
+.button:disabled {
+  color: var(--win95-dark-gray);
+  text-shadow: 1px 1px 0 var(--win95-white);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Focus outline (dotted inner border like Win95) ── */
+.button:focus-visible {
+  outline: 1px dotted var(--win95-black);
+  outline-offset: -4px;
+}

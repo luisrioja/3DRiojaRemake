@@ -1,0 +1,145 @@
+/* PortfolioManager — Win95 styled portfolio CRUD */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-lg);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: var(--win95-font-size-lg);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  background: var(--win95-field-bg);
+  box-shadow: var(--win95-border-sunken);
+}
+
+.table th {
+  background: var(--win95-gray);
+  box-shadow: var(--win95-border-raised);
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  text-align: left;
+  font-weight: bold;
+  user-select: none;
+}
+
+.table td {
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  border-bottom: 1px solid var(--win95-light-gray);
+  vertical-align: middle;
+}
+
+.table tr:hover td {
+  background: var(--win95-highlight);
+  color: var(--win95-highlight-text);
+}
+
+.actions {
+  display: flex;
+  gap: var(--win95-spacing-sm);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-md);
+  padding: var(--win95-spacing-lg);
+  background: var(--win95-gray);
+  box-shadow: var(--win95-border-raised);
+}
+
+.formTitle {
+  font-weight: bold;
+  font-size: var(--win95-font-size-lg);
+  margin-bottom: var(--win95-spacing-sm);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-xs);
+}
+
+.field label {
+  font-weight: bold;
+  font-size: var(--win95-font-size-base);
+}
+
+.field input,
+.field textarea {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  padding: var(--win95-spacing-sm);
+  background: var(--win95-field-bg);
+  color: var(--win95-field-text);
+  border: none;
+  box-shadow: var(--win95-border-field);
+  outline: none;
+  resize: vertical;
+}
+
+.formButtons {
+  display: flex;
+  gap: var(--win95-spacing-sm);
+  justify-content: flex-end;
+}
+
+.loading,
+.error,
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--win95-spacing-xl);
+  color: var(--win95-dark-gray);
+  font-size: var(--win95-font-size-lg);
+}
+
+.error {
+  color: #ff0000;
+}
+
+/* ── Mobile: responsive table ── */
+@media (max-width: 767px) {
+  .table {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: var(--win95-spacing-xs) var(--win95-spacing-sm);
+  }
+
+  .header {
+    flex-direction: column;
+    gap: var(--win95-spacing-sm);
+    align-items: flex-start;
+  }
+
+  .form {
+    padding: var(--win95-spacing-md);
+  }
+}
+
+/* ── Extra small ── */
+@media (max-width: 374px) {
+  .form {
+    padding: var(--win95-spacing-sm);
+  }
+
+  .formButtons {
+    flex-direction: column;
+  }
+}

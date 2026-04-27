@@ -1,0 +1,85 @@
+/* AdminLogin — Win95 styled login dialog */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--win95-desktop-teal);
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+}
+
+.dialog {
+  width: 340px;
+  max-width: 90vw;
+}
+
+.titleBar {
+  background: var(--win95-title-blue);
+  color: var(--win95-highlight-text);
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  font-weight: bold;
+  font-size: var(--win95-font-size-title);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: var(--win95-spacing-sm);
+}
+
+.titleIcon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.body {
+  padding: var(--win95-spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win95-spacing-sm);
+}
+
+.label {
+  color: var(--win95-window-text);
+  font-size: var(--win95-font-size-base);
+}
+
+.input {
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  border: none;
+  background-color: var(--win95-field-bg);
+  color: var(--win95-field-text);
+  box-shadow: var(--win95-border-field);
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--win95-spacing-md);
+  margin-top: var(--win95-spacing-sm);
+}
+
+.error {
+  color: var(--win95-black);
+  background-color: var(--win95-gray);
+  padding: var(--win95-spacing-sm) var(--win95-spacing-md);
+  font-size: var(--win95-font-size-base);
+  box-shadow: var(--win95-border-sunken);
+  text-align: center;
+}

@@ -1,0 +1,126 @@
+/* StartMenu — Windows 95 styled Start Menu */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+}
+
+.startMenu {
+  position: fixed;
+  left: 2px;
+  bottom: var(--win95-taskbar-height);
+  width: 200px;
+  background-color: var(--win95-button-face);
+  box-shadow: var(--win95-border-raised);
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  z-index: 9999;
+  display: flex;
+  flex-direction: row;
+}
+
+/* ── Vertical blue sidebar ── */
+.sidebar {
+  width: 24px;
+  background: linear-gradient(to top, var(--win95-title-blue), #1084d0);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.sidebarText {
+  color: var(--win95-white);
+  font-size: 14px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 1px;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* ── Menu items area ── */
+.menuItems {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 6px;
+  cursor: pointer;
+  color: var(--win95-button-text);
+  background: none;
+  border: none;
+  font-family: var(--win95-font-system);
+  font-size: var(--win95-font-size-base);
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.menuItem:hover,
+.menuItem:focus-visible {
+  background-color: var(--win95-highlight);
+  color: var(--win95-highlight-text);
+  outline: none;
+}
+
+.menuItemIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.menuItemLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Divider ── */
+.divider {
+  height: 2px;
+  margin: 2px 3px;
+  border-top: 1px solid var(--win95-dark-gray);
+  border-bottom: 1px solid var(--win95-white);
+}
+
+/* ── Mode switch item ── */
+.modeSwitchItem {
+  composes: menuItem;
+}
+
+/* ── Mobile: wider start menu ── */
+@media (max-width: 767px) {
+  .startMenu {
+    width: 180px;
+  }
+
+  .sidebar {
+    width: 20px;
+  }
+
+  .sidebarText {
+    font-size: 12px;
+  }
+}
+
+/* ── Extra small ── */
+@media (max-width: 374px) {
+  .startMenu {
+    width: 160px;
+  }
+}
