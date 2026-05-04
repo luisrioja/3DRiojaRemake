@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import multer from 'multer';
+import fs from 'fs';
 import { JSONStore } from '../store/JSONStore.js';
 import { requireAuth } from '../middleware/auth.js';
 import { validatePortfolioInput } from '../utils/validation.js';
@@ -14,6 +16,38 @@ const portfolioStore = new JSONStore<PortfolioData>(
   path.resolve('data/portfolio.json'),
   { projects: [] }
 );
+
+// Multer configuration
+const uploadDir = path.resolve('data/portfolio-images');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (_req, _file, cb) => {
+    cb(null, uploadDir);
+  },
+  filename: (_req, file, cb) => {
+    // Save with a predictable name format: Portfolio_UUID.ext
+    const ext = path.extname(file.originalname);
+    const filename = `Portfolio_${uuidv4()}${ext}`;
+    cb(null, filename);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: (_req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png|webp|avif/;
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowedTypes.test(file.mimetype);
+    if (extname && mimetype) {
+      return cb(null, true);
+    }
+    cb(new Error('Solo se permiten imágenes (jpeg, jpg, png, webp, avif)'));
+  },
+});
 
 const router = Router();
 
@@ -132,6 +166,18 @@ router.delete('/:id', requireAuth, async (req, res) => {
     const response: ApiResponse<never> = { success: false, error: 'Error al eliminar el proyecto' };
     res.status(500).json(response);
   }
+});
+
+// POST /api/portfolio/upload
+router.post('/upload', requireAuth, upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ success: false, error: 'No se subió ninguna imagen' });
+  }
+
+  // Return the path that the frontend will use to access the image
+  // We'll serve data/portfolio-images as /uploads/portfolio
+  const imagePath = `/api/uploads/portfolio/${req.file.filename}`;
+  res.json({ success: true, data: { url: imagePath } });
 });
 
 export default router;

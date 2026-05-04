@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Panel95 } from '../win95/Panel95';
 import { Button95 } from '../win95/Button95';
-import { getPortfolio, createProject, updateProject, deleteProject } from '../../services/api';
+import { getPortfolio, createProject, updateProject, deleteProject, uploadPortfolioImage } from '../../services/api';
 import type { PortfolioProject } from '../../types';
 import styles from './PortfolioManager.module.css';
 
@@ -20,6 +20,7 @@ export const PortfolioManager: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm);
+  const [uploading, setUploading] = useState(false);
 
   const fetchProjects = useCallback(async () => {
     setLoading(true);
@@ -92,6 +93,22 @@ export const PortfolioManager: React.FC = () => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    setError(null);
+
+    const res = await uploadPortfolioImage(file);
+    if (res.success && res.data) {
+      setForm(prev => ({ ...prev, image: res.data!.url }));
+    } else {
+      setError(res.error ?? 'Error al subir la imagen');
+    }
+    setUploading(false);
+  };
+
   if (loading) {
     return (
       <Panel95 variant="sunken" className={styles.loading}>
@@ -127,8 +144,35 @@ export const PortfolioManager: React.FC = () => {
             <textarea id="pm-description" name="description" value={form.description} onChange={handleChange} required rows={3} />
           </div>
           <div className={styles.field}>
-            <label htmlFor="pm-image">Imagen (URL o ruta)</label>
-            <input id="pm-image" name="image" value={form.image} onChange={handleChange} required />
+            <label htmlFor="pm-image">Imagen (URL o subir archivo)</label>
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+              <input id="pm-image" name="image" value={form.image} onChange={handleChange} required style={{ flex: 1 }} />
+              <div style={{ position: 'relative', overflow: 'hidden' }}>
+                <Button95 size="sm" type="button" disabled={uploading}>
+                  {uploading ? '⌛...' : '📁 Subir'}
+                </Button95>
+                <input
+                  type="file"
+                  onChange={handleFileUpload}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    opacity: 0,
+                    width: '100%',
+                    height: '100%',
+                    cursor: 'pointer',
+                  }}
+                  accept="image/*"
+                  disabled={uploading}
+                />
+              </div>
+            </div>
+            {form.image && (
+              <div style={{ marginTop: '8px' }}>
+                <img src={form.image} alt="Preview" style={{ maxWidth: '100px', height: 'auto', border: '1px solid #000' }} />
+              </div>
+            )}
           </div>
           <div className={styles.formButtons}>
             <Button95 type="submit" size="sm">💾 Guardar</Button95>

@@ -24,6 +24,9 @@ app.use('/api/testimonials', testimonialsRouter);
 app.use('/api/about', aboutRouter);
 app.use('/api/auth', authRouter);
 
+// Serve uploads statically
+app.use('/api/uploads/portfolio', express.static('data/portfolio-images'));
+
 app.use((_req: Request, res: Response) => {
   res.status(404).json({ success: false, error: 'Ruta no encontrada' });
 });

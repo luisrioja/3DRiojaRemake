@@ -97,6 +97,19 @@ export async function deleteProject(id: string): Promise<ApiResponse<void>> {
   return request<void>(`/portfolio/${id}`, { method: 'DELETE' });
 }
 
+export async function uploadPortfolioImage(file: File): Promise<ApiResponse<{ url: string }>> {
+  const formData = new FormData();
+  formData.append('image', file);
+
+  // Note: We don't set Content-Type header here, the browser will do it with the boundary
+  const response = await fetch(`${API_BASE}/portfolio/upload`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  return response.json();
+}
+
 // --- Admin: Services CRUD ---
 
 export async function createService(
