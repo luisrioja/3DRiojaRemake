@@ -139,7 +139,7 @@ export const Window: React.FC<WindowProps> = ({
         className={titleBarClassNames}
         data-testid={`titlebar-${id}`}
       >
-        {icon && <span className={styles.titleIcon}>{icon}</span>}
+        {icon && <span className={styles.titleIcon}>{icon.startsWith('/') ? <img src={icon} alt="" width="14" height="14" /> : icon}</span>}
         <span className={styles.titleText}>{title}</span>
         <div className={styles.titleButtons}>
           <button

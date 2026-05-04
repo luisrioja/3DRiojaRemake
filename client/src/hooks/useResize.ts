@@ -124,6 +124,10 @@ export function useResize(options: UseResizeOptions): {
       const el = elementRef.current;
       if (!el) return;
 
+      // Prevent drag from also starting
+      e.stopPropagation?.();
+      e.preventDefault?.();
+
       directionRef.current = dir;
       startPointerRef.current = { x: e.clientX, y: e.clientY };
       startSizeRef.current = { ...sizeRef.current };

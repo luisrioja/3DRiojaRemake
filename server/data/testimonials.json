@@ -1,39 +1,28 @@
 {
   "testimonials": [
     {
-      "id": "t1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c",
-      "author": "María García López",
-      "text": "Excelente servicio y atención al cliente. Encargué unas piezas para un proyecto personal y el resultado superó mis expectativas. La calidad de impresión es impecable y los plazos de entrega se cumplieron perfectamente.",
+      "id": "gm-review-alberto-sorribes",
+      "author": "Alberto Sorribes",
+      "text": "Trato excelente y la entrega fue bastante rápida, encargué unas piezas para sujetar esterillas en mi gimnasio y estoy muy contento.",
       "rating": 5,
-      "date": "2025-02-10"
+      "date": "2025-08-01",
+      "source": "Google Maps"
     },
     {
-      "id": "t2b3c4d5-e6f7-4a8b-9c0d-1e2f3a4b5c6d",
-      "author": "Carlos Martínez Ruiz",
-      "text": "Muy profesionales. Me ayudaron con el diseño de un prototipo para mi empresa y quedó genial. Repetiré seguro. La consultoría previa fue muy útil para elegir el material adecuado.",
+      "id": "gm-review-maria-miranda",
+      "author": "María del Mar Miranda",
+      "text": "Muy atento, sin duda volveré a contactar con él. Muy personalizado y a muy buen precio.",
       "rating": 5,
-      "date": "2025-01-25"
+      "date": "2025-08-01",
+      "source": "Google Maps"
     },
     {
-      "id": "t3c4d5e6-f7a8-4b9c-0d1e-2f3a4b5c6d7e",
-      "author": "Ana Fernández Sáenz",
-      "text": "Pedí unas figuras personalizadas para un regalo y quedaron espectaculares. El trato fue muy cercano y me asesoraron en todo momento sobre los acabados. Muy recomendable.",
-      "rating": 4,
-      "date": "2025-03-05"
-    },
-    {
-      "id": "t4d5e6f7-a8b9-4c0d-1e2f-3a4b5c6d7e8f",
-      "author": "Javier Rodríguez Pérez",
-      "text": "Buen trabajo en general. Las piezas técnicas que encargué encajaron a la perfección. El único pero es que tardaron un par de días más de lo previsto, pero el resultado final mereció la pena.",
-      "rating": 4,
-      "date": "2025-03-18"
-    },
-    {
-      "id": "t5e6f7a8-b9c0-4d1e-2f3a-4b5c6d7e8f9a",
-      "author": "Laura Díaz Hernández",
-      "text": "Increíble experiencia. Desde la primera consulta hasta la entrega final, todo fue perfecto. Hicieron una maqueta arquitectónica para mi estudio con un nivel de detalle asombroso. Sin duda volveré a contar con ellos.",
+      "id": "gm-review-alvaro-quintanilla",
+      "author": "Álvaro Quintanilla",
+      "text": "100% recomendado. Productos de calidad y atención al detalle.",
       "rating": 5,
-      "date": "2025-04-02"
+      "date": "2025-08-01",
+      "source": "Google Maps"
     }
   ]
 }

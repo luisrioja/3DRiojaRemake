@@ -1,5 +1,7 @@
 /* Win95 Theme — CSS custom properties and base theme tokens */
 
+@import url('https://fonts.cdnfonts.com/css/w95fa');
+
 :root {
   /* ── Color palette ── */
   --win95-gray: #C0C0C0;
@@ -20,7 +22,7 @@
   --win95-field-text: #000000;
 
   /* ── Typography ── */
-  --win95-font-system: "MS Sans Serif", "Microsoft Sans Serif", Arial, Helvetica, sans-serif;
+  --win95-font-system: "W95FA", "MS Sans Serif", "Microsoft Sans Serif", Tahoma, Arial, Helvetica, sans-serif;
   --win95-font-mono: "Fixedsys", "Courier New", Courier, monospace;
   --win95-font-size-base: 11px;
   --win95-font-size-sm: 10px;

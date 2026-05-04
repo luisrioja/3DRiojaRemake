@@ -10,9 +10,10 @@ describe('Hero', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders the 3DRioja logo placeholder', () => {
+  it('renders the 3DRioja logo', () => {
     render(<Hero />);
-    expect(screen.getByText(/🖨️ 3DRioja/)).toBeInTheDocument();
+    expect(screen.getByAltText('3DRioja')).toBeInTheDocument();
+    expect(screen.getByText(/3DRioja/)).toBeInTheDocument();
   });
 
   it('renders "Ver" CTA button', () => {

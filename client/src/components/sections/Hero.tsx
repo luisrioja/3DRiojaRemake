@@ -10,7 +10,7 @@ export interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <Panel95 variant="raised" className={styles.hero}>
-      <div className={styles.logo}>🖨️ 3DRioja</div>
+      <div className={styles.logo}><img src="/images/logo.svg" alt="3DRioja" width="32" height="32" /> 3DRioja</div>
       <h1 className={styles.title}>Impresión 3D Personalizada para Todos</h1>
       <div className={styles.actions}>
         <Button95 onClick={() => onNavigate?.('portfolio')}>Ver</Button95>

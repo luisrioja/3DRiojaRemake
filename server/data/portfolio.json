@@ -2,17 +2,17 @@
   "projects": [
     {
       "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-      "title": "Maqueta Arquitectónica Villa Rioja",
-      "description": "Reproducción a escala 1:100 de una villa riojana tradicional, impresa en PLA blanco con detalles pintados a mano. Incluye tejado, balcones y jardín interior.",
-      "image": "/images/portfolio/maqueta-villa.jpg",
+      "title": "Ganchos de Yoga",
+      "description": "Impresión 3D de sujeciones para abaratar costes respecto a las alternativas comerciales.",
+      "image": "/images/portfolio/Portfolio01.avif",
       "createdAt": "2025-01-15T10:30:00.000Z",
-      "updatedAt": "2025-01-15T10:30:00.000Z"
+      "updatedAt": "2026-05-04T07:26:56.234Z"
     },
     {
       "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
       "title": "Prototipo de Engranaje Industrial",
       "description": "Engranaje helicoidal funcional impreso en PETG para pruebas de concepto en maquinaria agrícola. Tolerancias de 0.1mm y resistencia a torsión verificada.",
-      "image": "/images/portfolio/engranaje-industrial.jpg",
+      "image": "/images/portfolio/Portfolio02.webp",
       "createdAt": "2025-02-03T14:15:00.000Z",
       "updatedAt": "2025-02-03T14:15:00.000Z"
     },
@@ -20,7 +20,7 @@
       "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "title": "Figuras Personalizadas para Evento",
       "description": "Colección de 50 figuras personalizadas de 15cm para un evento corporativo en Logroño. Cada figura modelada a partir de fotografías de los asistentes.",
-      "image": "/images/portfolio/figuras-evento.jpg",
+      "image": "/images/portfolio/Portfolio03.webp",
       "createdAt": "2025-02-20T09:00:00.000Z",
       "updatedAt": "2025-02-20T09:00:00.000Z"
     },
@@ -28,25 +28,9 @@
       "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
       "title": "Carcasa de Dron a Medida",
       "description": "Carcasa protectora para dron de inspección agrícola, diseñada en Fusion 360 e impresa en ASA resistente a UV. Peso optimizado de 120g con soportes para cámara.",
-      "image": "/images/portfolio/carcasa-dron.jpg",
+      "image": "/images/portfolio/Portfolio04.webp",
       "createdAt": "2025-03-10T16:45:00.000Z",
       "updatedAt": "2025-03-10T16:45:00.000Z"
-    },
-    {
-      "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
-      "title": "Señalización Turística en 3D",
-      "description": "Letras y logotipos tridimensionales para la oficina de turismo de Haro. Impresos en PLA y acabados con pintura acrílica resistente a la intemperie.",
-      "image": "/images/portfolio/senalizacion-turistica.jpg",
-      "createdAt": "2025-03-28T11:20:00.000Z",
-      "updatedAt": "2025-03-28T11:20:00.000Z"
-    },
-    {
-      "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
-      "title": "Prótesis de Mano Funcional",
-      "description": "Prótesis de mano mecánica de bajo coste impresa en TPU flexible y PLA. Proyecto solidario en colaboración con la asociación de ayuda local. Totalmente funcional con sistema de cables.",
-      "image": "/images/portfolio/protesis-mano.jpg",
-      "createdAt": "2025-04-12T08:00:00.000Z",
-      "updatedAt": "2025-04-12T08:00:00.000Z"
     }
   ]
 }

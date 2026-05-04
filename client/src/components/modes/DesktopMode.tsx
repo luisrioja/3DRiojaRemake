@@ -22,11 +22,11 @@ interface DesktopSection {
 }
 
 const DESKTOP_SECTIONS: DesktopSection[] = [
-  { id: 'portfolio', label: 'Portfolio', icon: '📁' },
-  { id: 'servicios', label: 'Servicios', icon: '🔧' },
-  { id: 'sobre-nosotros', label: 'Sobre Nosotros', icon: 'ℹ️' },
-  { id: 'contacto', label: 'Contacto', icon: '✉️' },
-  { id: 'testimonios', label: 'Testimonios', icon: '⭐' },
+  { id: 'portfolio', label: 'Portfolio', icon: '/images/icons/folder.svg' },
+  { id: 'servicios', label: 'Servicios', icon: '/images/icons/wrench.svg' },
+  { id: 'sobre-nosotros', label: 'Sobre Nosotros', icon: '/images/icons/info.svg' },
+  { id: 'contacto', label: 'Contacto', icon: '/images/icons/mail.svg' },
+  { id: 'testimonios', label: 'Testimonios', icon: '/images/icons/star.svg' },
 ];
 
 export interface DesktopModeProps {

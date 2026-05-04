@@ -18,11 +18,11 @@ interface ClassicSection {
 }
 
 const SECTIONS: ClassicSection[] = [
-  { id: 'portfolio', label: 'Portfolio', icon: '📁' },
-  { id: 'servicios', label: 'Servicios', icon: '🔧' },
-  { id: 'sobre-nosotros', label: 'Sobre Nosotros', icon: 'ℹ️' },
-  { id: 'contacto', label: 'Contacto', icon: '✉️' },
-  { id: 'testimonios', label: 'Testimonios', icon: '⭐' },
+  { id: 'portfolio', label: 'Portfolio', icon: '/images/icons/folder.svg' },
+  { id: 'servicios', label: 'Servicios', icon: '/images/icons/wrench.svg' },
+  { id: 'sobre-nosotros', label: 'Sobre Nosotros', icon: '/images/icons/info.svg' },
+  { id: 'contacto', label: 'Contacto', icon: '/images/icons/mail.svg' },
+  { id: 'testimonios', label: 'Testimonios', icon: '/images/icons/star.svg' },
 ];
 
 export interface ClassicModeProps {
@@ -56,7 +56,7 @@ export const ClassicMode: React.FC<ClassicModeProps> = ({ onModeSwitch }) => {
     <div data-testid="classic-mode">
       {/* ── Navigation bar ── */}
       <nav className={styles.navbar} role="navigation" aria-label="Navegación principal">
-        <span className={styles.navBrand}>3DRioja</span>
+        <span className={styles.navBrand}><img src="/images/logo.svg" alt="" width="20" height="20" className={styles.navBrandLogo} /> 3DRioja</span>
 
         {/* Desktop nav links */}
         <ul className={styles.navLinks} role="menubar">
@@ -127,7 +127,7 @@ export const ClassicMode: React.FC<ClassicModeProps> = ({ onModeSwitch }) => {
           <div key={section.id} id={section.id} className={styles.section}>
             <Panel95 variant="raised">
               <div className={styles.sectionTitleBar}>
-                <span className={styles.sectionIcon}>{section.icon}</span>
+                <span className={styles.sectionIcon}><img src={section.icon} alt="" width="16" height="16" /></span>
                 {section.label}
               </div>
               <div className={styles.sectionBody}>

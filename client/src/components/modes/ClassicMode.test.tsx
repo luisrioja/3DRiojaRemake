@@ -32,7 +32,7 @@ describe('ClassicMode', () => {
   it('renders the navigation bar with brand', () => {
     render(<ClassicMode onModeSwitch={onModeSwitch} />);
     expect(screen.getByRole('navigation', { name: 'Navegación principal' })).toBeInTheDocument();
-    expect(screen.getByText('3DRioja')).toBeInTheDocument();
+    expect(screen.getAllByText(/3DRioja/)[0]).toBeInTheDocument();
   });
 
   it('renders navigation links for all sections', () => {

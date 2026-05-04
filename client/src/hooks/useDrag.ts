@@ -45,6 +45,10 @@ export function useDrag(options: UseDragOptions): {
       const handle = handleRef.current;
       if (!handle) return;
 
+      // Don't start drag if clicking a button (e.g. minimize/maximize/close)
+      const target = e.target as HTMLElement | null;
+      if (target?.closest?.('button')) return;
+
       offsetRef.current = {
         x: e.clientX - positionRef.current.x,
         y: e.clientY - positionRef.current.y,

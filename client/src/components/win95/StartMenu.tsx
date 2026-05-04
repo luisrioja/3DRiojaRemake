@@ -73,7 +73,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
             >
               {item.icon && (
                 <span className={styles.menuItemIcon} aria-hidden="true">
-                  {item.icon}
+                  {item.icon.startsWith('/') ? <img src={item.icon} alt="" width="16" height="16" /> : item.icon}
                 </span>
               )}
               <span className={styles.menuItemLabel}>{item.label}</span>
@@ -90,7 +90,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
             onClick={handleModeSwitchClick}
           >
             <span className={styles.menuItemIcon} aria-hidden="true">
-              🔄
+              <img src="/images/icons/refresh.svg" alt="" width="16" height="16" />
             </span>
             <span className={styles.menuItemLabel}>Modo Clásico</span>
           </button>
