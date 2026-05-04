@@ -14,7 +14,7 @@ import type { PortfolioProject, Service, Testimonial, ApiResponse } from '../typ
 
 const JWT_SECRET = 'dev-secret-3drioja';
 const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'admin';
+const ADMIN_PASSWORD = 'VrjoNeFoNZoW3xC';
 
 // --- Test App Factory ---
 // Creates a fresh Express app with routes pointing to temp data directories

@@ -76,43 +76,60 @@ export function useDrag(options: UseDragOptions): {
     [clamp],
   );
 
-  const handlePointerUp = useCallback(
-    (e: PointerEvent) => {
-      if (!isDraggingRef.current) return;
+    const handlePointerUp = useCallback(
+      (e: PointerEvent) => {
+        if (!isDraggingRef.current) return;
 
+        const handle = handleRef.current;
+        if (handle && e.pointerId) {
+          try {
+            handle.releasePointerCapture(e.pointerId);
+          } catch (err) {
+            // Ignore if capture was already lost
+          }
+        }
+
+        isDraggingRef.current = false;
+        setIsDragging(false);
+
+        // e.clientX/Y might be undefined on some edge case events (like cancel), use last position if so
+        const clientX = e.clientX ?? positionRef.current.x + offsetRef.current.x;
+        const clientY = e.clientY ?? positionRef.current.y + offsetRef.current.y;
+
+        const finalPos = clamp({
+          x: clientX - offsetRef.current.x,
+          y: clientY - offsetRef.current.y,
+        });
+        
+        positionRef.current = finalPos;
+        setPosition(finalPos);
+        onDragEndRef.current?.(finalPos);
+      },
+      [handleRef, clamp],
+    );
+
+    useEffect(() => {
       const handle = handleRef.current;
-      if (handle) {
-        handle.releasePointerCapture(e.pointerId);
-      }
+      if (!handle) return;
 
-      isDraggingRef.current = false;
-      setIsDragging(false);
+      handle.addEventListener('pointerdown', handlePointerDown);
+      handle.addEventListener('pointermove', handlePointerMove);
+      handle.addEventListener('pointerup', handlePointerUp);
+      handle.addEventListener('pointercancel', handlePointerUp);
+      handle.addEventListener('lostpointercapture', handlePointerUp);
+      
+      // Fallback: listen on window to catch pointerup outside the window
+      window.addEventListener('pointerup', handlePointerUp);
 
-      const finalPos = clamp({
-        x: e.clientX - offsetRef.current.x,
-        y: e.clientY - offsetRef.current.y,
-      });
-      positionRef.current = finalPos;
-      setPosition(finalPos);
-      onDragEndRef.current?.(finalPos);
-    },
-    [handleRef, clamp],
-  );
-
-  useEffect(() => {
-    const handle = handleRef.current;
-    if (!handle) return;
-
-    handle.addEventListener('pointerdown', handlePointerDown);
-    handle.addEventListener('pointermove', handlePointerMove);
-    handle.addEventListener('pointerup', handlePointerUp);
-
-    return () => {
-      handle.removeEventListener('pointerdown', handlePointerDown);
-      handle.removeEventListener('pointermove', handlePointerMove);
-      handle.removeEventListener('pointerup', handlePointerUp);
-    };
-  }, [handleRef, handlePointerDown, handlePointerMove, handlePointerUp]);
+      return () => {
+        handle.removeEventListener('pointerdown', handlePointerDown);
+        handle.removeEventListener('pointermove', handlePointerMove);
+        handle.removeEventListener('pointerup', handlePointerUp);
+        handle.removeEventListener('pointercancel', handlePointerUp);
+        handle.removeEventListener('lostpointercapture', handlePointerUp);
+        window.removeEventListener('pointerup', handlePointerUp);
+      };
+    }, [handleRef, handlePointerDown, handlePointerMove, handlePointerUp]);
 
   // Sync with external initialPosition changes
   useEffect(() => {

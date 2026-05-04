@@ -23,7 +23,7 @@ describe('Auth Routes', () => {
     it('should return 200 and set httpOnly cookie with valid credentials', async () => {
       const res = await request(app)
         .post('/api/auth/login')
-        .send({ username: 'admin', password: 'admin' });
+        .send({ username: 'admin', password: 'VrjoNeFoNZoW3xC' });
 
       expect(res.status).toBe(200);
       expect(res.body.success).toBe(true);
@@ -52,7 +52,7 @@ describe('Auth Routes', () => {
     it('should return 401 with wrong username', async () => {
       const res = await request(app)
         .post('/api/auth/login')
-        .send({ username: 'wrong', password: 'admin' });
+        .send({ username: 'wrong', password: 'VrjoNeFoNZoW3xC' });
 
       expect(res.status).toBe(401);
       expect(res.body.error).toBe('Credenciales incorrectas');
@@ -70,7 +70,7 @@ describe('Auth Routes', () => {
     it('should return 400 with empty username', async () => {
       const res = await request(app)
         .post('/api/auth/login')
-        .send({ username: '', password: 'admin' });
+        .send({ username: '', password: 'VrjoNeFoNZoW3xC' });
 
       expect(res.status).toBe(400);
     });
@@ -124,7 +124,7 @@ describe('Auth Routes', () => {
       // First login to get a valid token
       const loginRes = await request(app)
         .post('/api/auth/login')
-        .send({ username: 'admin', password: 'admin' });
+        .send({ username: 'admin', password: 'VrjoNeFoNZoW3xC' });
 
       const cookies = loginRes.headers['set-cookie'];
       const tokenCookie = Array.isArray(cookies)
@@ -144,7 +144,7 @@ describe('Auth Routes', () => {
       // Login first
       const loginRes = await request(app)
         .post('/api/auth/login')
-        .send({ username: 'admin', password: 'admin' });
+        .send({ username: 'admin', password: 'VrjoNeFoNZoW3xC' });
 
       const cookies = loginRes.headers['set-cookie'];
       const tokenCookie = Array.isArray(cookies)

@@ -5,7 +5,7 @@ import type { ApiResponse } from '../types/index.js';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-3drioja';
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'VrjoNeFoNZoW3xC';
 
 const router = Router();
 
