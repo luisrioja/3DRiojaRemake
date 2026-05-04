@@ -5,6 +5,9 @@
   inset: 0;
   bottom: var(--win95-taskbar-height);
   background-color: var(--win95-desktop-teal);
+  background-image: url('/images/bg-3drioja.png');
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
 }
 

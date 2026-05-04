@@ -86,6 +86,10 @@
   margin-top: 28px;
   padding: var(--win95-spacing-md);
   background-color: var(--win95-desktop-teal);
+  background-image: url('/images/bg-3drioja.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   min-height: calc(100vh - 28px);
 }
 

@@ -36,9 +36,15 @@ describe('Property 12: Renderizado de tarjetas de servicio contiene toda la info
         expect(descEl).not.toBeNull();
         expect(descEl!.textContent).toBe(service.description);
 
-        const iconEl = container.querySelector('[role="img"]');
-        expect(iconEl).not.toBeNull();
-        expect(iconEl!.textContent).toBe(service.icon);
+        if (service.icon && service.icon.length <= 2) {
+          const iconEl = container.querySelector('[role="img"]');
+          expect(iconEl).not.toBeNull();
+          expect(iconEl!.textContent).toBe(service.icon);
+        } else {
+          const imgEl = container.querySelector('img');
+          expect(imgEl).not.toBeNull();
+          expect(imgEl!.getAttribute('src')).toBe(`/images/icons/${service.icon || 'wrench'}.svg`);
+        }
 
         unmount();
       }),

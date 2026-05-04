@@ -46,7 +46,7 @@ export const Contact: React.FC = () => {
         <h3 className={styles.subheading}>Síguenos</h3>
         <div className={styles.socialLinks}>
           <a
-            href="https://instagram.com/3drioja"
+            href="https://www.instagram.com/3drioja_/"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
@@ -54,7 +54,7 @@ export const Contact: React.FC = () => {
             Instagram
           </a>
           <a
-            href="https://tiktok.com/@3drioja"
+            href="https://www.tiktok.com/@3drioja"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
@@ -62,12 +62,12 @@ export const Contact: React.FC = () => {
             TikTok
           </a>
           <a
-            href="https://x.com/3drioja"
+            href="https://www.youtube.com/@3DRioja"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
           >
-            Twitter/X
+            YouTube
           </a>
         </div>
       </Panel95>

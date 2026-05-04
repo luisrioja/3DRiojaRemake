@@ -20,21 +20,21 @@ describe('Contact', () => {
   it('renders Instagram social link', () => {
     render(<Contact />);
     const link = screen.getByRole('link', { name: 'Instagram' });
-    expect(link).toHaveAttribute('href', 'https://instagram.com/3drioja');
+    expect(link).toHaveAttribute('href', 'https://www.instagram.com/3drioja_/');
     expect(link).toHaveAttribute('target', '_blank');
   });
 
   it('renders TikTok social link', () => {
     render(<Contact />);
     const link = screen.getByRole('link', { name: 'TikTok' });
-    expect(link).toHaveAttribute('href', 'https://tiktok.com/@3drioja');
+    expect(link).toHaveAttribute('href', 'https://www.tiktok.com/@3drioja');
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  it('renders Twitter/X social link', () => {
+  it('renders YouTube social link', () => {
     render(<Contact />);
-    const link = screen.getByRole('link', { name: 'Twitter/X' });
-    expect(link).toHaveAttribute('href', 'https://x.com/3drioja');
+    const link = screen.getByRole('link', { name: 'YouTube' });
+    expect(link).toHaveAttribute('href', 'https://www.youtube.com/@3DRioja');
     expect(link).toHaveAttribute('target', '_blank');
   });
 
