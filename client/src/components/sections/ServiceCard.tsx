@@ -10,9 +10,20 @@ export interface ServiceCardProps {
 export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   return (
     <Panel95 variant="raised" className={styles.card}>
-      <span className={styles.cardIcon} role="img" aria-label={`${service.title} icon`}>
-        {service.icon}
-      </span>
+      <div className={styles.cardIconWrapper}>
+        {service.icon?.length <= 2 ? (
+          <span className={styles.cardIcon} role="img" aria-label={`${service.title} icon`}>
+            {service.icon}
+          </span>
+        ) : (
+          <img 
+            src={`/images/icons/${service.icon || 'wrench'}.svg`} 
+            alt={`${service.title} icon`} 
+            className={styles.cardIconImage}
+            onError={(e) => { e.currentTarget.src = '/images/icons/wrench.svg'; }}
+          />
+        )}
+      </div>
       <h3 className={styles.cardTitle}>{service.title}</h3>
       <p className={styles.cardDescription}>{service.description}</p>
     </Panel95>

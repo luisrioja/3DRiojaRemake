@@ -5,7 +5,7 @@ import { Footer } from './Footer';
 describe('Footer', () => {
   it('renders the copyright text', () => {
     render(<Footer />);
-    expect(screen.getByText('© 2025. All rights reserved.')).toBeInTheDocument();
+    expect(screen.getByText('© 2026. All rights reserved.')).toBeInTheDocument();
   });
 
   it('renders a footer element', () => {
@@ -27,6 +27,6 @@ describe('Footer', () => {
     const { container } = render(<Footer />);
     const paragraph = container.querySelector('p');
     expect(paragraph).toBeInTheDocument();
-    expect(paragraph).toHaveTextContent('© 2025. All rights reserved.');
+    expect(paragraph).toHaveTextContent('© 2026. All rights reserved.');
   });
 });

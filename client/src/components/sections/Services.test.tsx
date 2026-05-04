@@ -9,7 +9,7 @@ const mockServices: Service[] = [
     id: '1',
     title: 'Impresión 3D',
     description: 'Servicio de impresión 3D personalizada para tus proyectos.',
-    icon: '🖨️',
+    icon: 'wrench',
     createdAt: '2025-01-01T00:00:00.000Z',
     updatedAt: '2025-01-01T00:00:00.000Z',
   },
@@ -17,7 +17,7 @@ const mockServices: Service[] = [
     id: '2',
     title: 'Consultoría 3D',
     description: 'Asesoramiento experto en tecnologías de impresión 3D.',
-    icon: '💡',
+    icon: 'star',
     createdAt: '2025-01-01T00:00:00.000Z',
     updatedAt: '2025-01-01T00:00:00.000Z',
   },
@@ -49,8 +49,9 @@ describe('Services', () => {
 
   it('renders service icons', () => {
     render(<Services services={mockServices} />);
-    expect(screen.getByText('🖨️')).toBeInTheDocument();
-    expect(screen.getByText('💡')).toBeInTheDocument();
+    const images = screen.getAllByRole('img');
+    expect(images[0]).toHaveAttribute('src', '/images/icons/wrench.svg');
+    expect(images[1]).toHaveAttribute('src', '/images/icons/star.svg');
   });
 
   it('shows loading state when loading is true', () => {

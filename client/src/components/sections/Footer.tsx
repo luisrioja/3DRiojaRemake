@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <footer>
       <Panel95 variant="raised" className={styles.footer}>
-        <p className={styles.text}>© 2025. All rights reserved.</p>
+        <p className={styles.text}>© 2026. All rights reserved.</p>
       </Panel95>
     </footer>
   );

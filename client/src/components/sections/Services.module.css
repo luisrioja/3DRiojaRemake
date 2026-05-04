@@ -27,9 +27,23 @@
   gap: var(--win95-spacing-md);
 }
 
+.cardIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 32px;
+}
+
 .cardIcon {
   font-size: 24px;
   line-height: 1;
+}
+
+.cardIconImage {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
 .cardTitle {

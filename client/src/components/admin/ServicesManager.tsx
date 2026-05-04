@@ -128,7 +128,19 @@ export const ServicesManager: React.FC = () => {
           </div>
           <div className={styles.field}>
             <label htmlFor="sm-icon">Icono</label>
-            <input id="sm-icon" name="icon" value={form.icon} onChange={handleChange} required />
+            <select 
+              id="sm-icon" 
+              name="icon" 
+              value={form.icon || 'wrench'} 
+              onChange={(e) => setForm(prev => ({ ...prev, icon: e.target.value }))}
+            >
+              <option value="wrench">Llave Inglesa (wrench)</option>
+              <option value="folder">Carpeta (folder)</option>
+              <option value="star">Estrella (star)</option>
+              <option value="info">Información (info)</option>
+              <option value="mail">Correo (mail)</option>
+              <option value="refresh">Recargar (refresh)</option>
+            </select>
           </div>
           <div className={styles.formButtons}>
             <Button95 type="submit" size="sm">💾 Guardar</Button95>

@@ -90,7 +90,7 @@ describe('ClassicMode', () => {
   it('renders Footer section at the bottom', () => {
     const { container } = render(<ClassicMode onModeSwitch={onModeSwitch} />);
     expect(container.querySelector('#footer')).toBeInTheDocument();
-    expect(screen.getByText('© 2025. All rights reserved.')).toBeInTheDocument();
+    expect(screen.getByText('© 2026. All rights reserved.')).toBeInTheDocument();
   });
 
   it('renders hamburger menu button', () => {

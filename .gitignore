@@ -2,3 +2,7 @@
 /.vscode
 node_modules
 dist
+docker-compose.yml
+server/Dockerfile
+client/nginx.conf
+client/Dockerfile
