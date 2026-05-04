@@ -1,4 +1,4 @@
-import type { ApiResponse, PortfolioProject, Service, Testimonial } from '../types';
+import type { ApiResponse, PortfolioProject, Service, Testimonial, AboutSection } from '../types';
 
 const API_BASE = '/api';
 
@@ -120,4 +120,33 @@ export async function updateService(
 
 export async function deleteService(id: string): Promise<ApiResponse<void>> {
   return request<void>(`/services/${id}`, { method: 'DELETE' });
+}
+
+// --- Admin: About CRUD ---
+
+export async function getAboutSections(): Promise<ApiResponse<AboutSection[]>> {
+  return request<AboutSection[]>('/about');
+}
+
+export async function createAboutSection(
+  data: Omit<AboutSection, 'id' | 'createdAt' | 'updatedAt'>
+): Promise<ApiResponse<AboutSection>> {
+  return request<AboutSection>('/about', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updateAboutSection(
+  id: string,
+  data: Partial<Omit<AboutSection, 'id' | 'createdAt' | 'updatedAt'>>
+): Promise<ApiResponse<AboutSection>> {
+  return request<AboutSection>(`/about/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function deleteAboutSection(id: string): Promise<ApiResponse<void>> {
+  return request<void>(`/about/${id}`, { method: 'DELETE' });
 }

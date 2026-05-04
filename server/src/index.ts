@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import portfolioRouter from './routes/portfolio.js';
 import servicesRouter from './routes/services.js';
 import testimonialsRouter from './routes/testimonials.js';
+import aboutRouter from './routes/about.js';
 import authRouter from './routes/auth.js';
 
 const app = express();
@@ -20,6 +21,7 @@ app.get('/api/health', (_req, res) => {
 app.use('/api/portfolio', portfolioRouter);
 app.use('/api/services', servicesRouter);
 app.use('/api/testimonials', testimonialsRouter);
+app.use('/api/about', aboutRouter);
 app.use('/api/auth', authRouter);
 
 app.use((_req: Request, res: Response) => {

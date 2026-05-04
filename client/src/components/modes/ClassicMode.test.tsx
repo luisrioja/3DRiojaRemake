@@ -14,6 +14,12 @@ vi.mock('../../hooks/useApiData', () => ({
     testimonials: [],
     testimonialsLoading: false,
     testimonialsError: null,
+    aboutSections: [
+      { id: '1', title: 'Impresión 3D Personalizada', content: '...', order: 1 },
+      { id: '2', title: 'Nuestra Misión', content: '...', order: 2 }
+    ],
+    aboutLoading: false,
+    aboutError: null,
   }),
 }));
 

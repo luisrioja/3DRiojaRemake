@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import type { Service, PortfolioProject, Testimonial } from '../types';
-import { getServices, getPortfolio, getTestimonials } from '../services/api';
+import type { Service, PortfolioProject, Testimonial, AboutSection } from '../types';
+import { getServices, getPortfolio, getTestimonials, getAboutSections } from '../services/api';
 
 export interface ApiData {
   services: Service[];
@@ -12,6 +12,9 @@ export interface ApiData {
   testimonials: Testimonial[];
   testimonialsLoading: boolean;
   testimonialsError: string | null;
+  aboutSections: AboutSection[];
+  aboutLoading: boolean;
+  aboutError: string | null;
 }
 
 export function useApiData(): ApiData {
@@ -26,6 +29,10 @@ export function useApiData(): ApiData {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [testimonialsLoading, setTestimonialsLoading] = useState(true);
   const [testimonialsError, setTestimonialsError] = useState<string | null>(null);
+
+  const [aboutSections, setAboutSections] = useState<AboutSection[]>([]);
+  const [aboutLoading, setAboutLoading] = useState(true);
+  const [aboutError, setAboutError] = useState<string | null>(null);
 
   useEffect(() => {
     getServices().then((res) => {
@@ -54,6 +61,15 @@ export function useApiData(): ApiData {
       }
       setTestimonialsLoading(false);
     });
+
+    getAboutSections().then((res) => {
+      if (res.success && res.data) {
+        setAboutSections(res.data);
+      } else {
+        setAboutError(res.error ?? 'Error al cargar sobre nosotros');
+      }
+      setAboutLoading(false);
+    });
   }, []);
 
   return {
@@ -66,5 +82,8 @@ export function useApiData(): ApiData {
     testimonials,
     testimonialsLoading,
     testimonialsError,
+    aboutSections,
+    aboutLoading,
+    aboutError,
   };
 }

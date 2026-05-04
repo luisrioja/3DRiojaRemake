@@ -24,6 +24,15 @@ export interface Testimonial {
   date: string;
 }
 
+export interface AboutSection {
+  id: string;
+  title: string;
+  content: string;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface PortfolioInput {
   title: string;
   description: string;

@@ -12,6 +12,7 @@ vi.mock('./services/api', () => ({
   getServices: vi.fn().mockResolvedValue({ success: true, data: [] }),
   getPortfolio: vi.fn().mockResolvedValue({ success: true, data: [] }),
   getTestimonials: vi.fn().mockResolvedValue({ success: true, data: [] }),
+  getAboutSections: vi.fn().mockResolvedValue({ success: true, data: [] }),
 }));
 
 function renderApp(initialRoute = '/') {

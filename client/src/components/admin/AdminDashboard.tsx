@@ -5,9 +5,10 @@ import { Panel95 } from '../win95/Panel95';
 import { Button95 } from '../win95/Button95';
 import { PortfolioManager } from './PortfolioManager';
 import { ServicesManager } from './ServicesManager';
+import { AboutManager } from './AboutManager';
 import styles from './AdminDashboard.module.css';
 
-type Section = 'portfolio' | 'servicios';
+type Section = 'portfolio' | 'servicios' | 'about';
 
 export const AdminDashboard: React.FC = () => {
   const { logout } = useAuthContext();
@@ -44,6 +45,14 @@ export const AdminDashboard: React.FC = () => {
           >
             🔧 Servicios
           </Button95>
+          <Button95
+            variant={activeSection === 'about' ? 'default' : 'flat'}
+            size="sm"
+            onClick={() => setActiveSection('about')}
+            className={activeSection === 'about' ? styles.navButtonActive : styles.navButton}
+          >
+            ℹ️ Sobre Nosotros
+          </Button95>
 
           <div className={styles.separator} />
           <div className={styles.spacer} />
@@ -59,6 +68,9 @@ export const AdminDashboard: React.FC = () => {
           )}
           {activeSection === 'servicios' && (
             <ServicesManager />
+          )}
+          {activeSection === 'about' && (
+            <AboutManager />
           )}
         </div>
       </Panel95>
