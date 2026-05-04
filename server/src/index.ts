@@ -5,6 +5,7 @@ import portfolioRouter from './routes/portfolio.js';
 import servicesRouter from './routes/services.js';
 import testimonialsRouter from './routes/testimonials.js';
 import aboutRouter from './routes/about.js';
+import newsletterRouter from './routes/newsletter.js';
 import authRouter from './routes/auth.js';
 
 const app = express();
@@ -22,6 +23,7 @@ app.use('/api/portfolio', portfolioRouter);
 app.use('/api/services', servicesRouter);
 app.use('/api/testimonials', testimonialsRouter);
 app.use('/api/about', aboutRouter);
+app.use('/api/newsletter', newsletterRouter);
 app.use('/api/auth', authRouter);
 
 // Serve uploads statically

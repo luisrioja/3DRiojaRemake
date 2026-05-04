@@ -1,0 +1,19 @@
+{
+  "emails": [
+    {
+      "id": "e13d10ab-c994-4866-9077-c43624667b25",
+      "email": "test@test.com",
+      "subscribedAt": "2026-05-04T21:08:54.607Z"
+    },
+    {
+      "id": "99aa75c6-8b82-4824-964b-40747dcbf6db",
+      "email": "test-email@3drioja.com",
+      "subscribedAt": "2026-05-04T21:11:15.678Z"
+    },
+    {
+      "id": "ac40105b-616a-475a-8f3a-03302a7bcb30",
+      "email": "test@test.commmm",
+      "subscribedAt": "2026-05-04T21:16:09.927Z"
+    }
+  ]
+}

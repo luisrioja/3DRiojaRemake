@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Panel95 } from '../win95/Panel95';
 import { Button95 } from '../win95/Button95';
 import { getAboutSections, createAboutSection, updateAboutSection, deleteAboutSection } from '../../services/api';
+import { Modal95 } from '../win95/Modal95';
 import type { AboutSection } from '../../types';
 import styles from './PortfolioManager.module.css'; // Reusing styles
 
@@ -20,6 +21,18 @@ export const AboutManager: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm);
+
+  // Modal states
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalConfig, setModalConfig] = useState<{
+    title: string;
+    message: string;
+    onConfirm: () => void;
+  }>({
+    title: '',
+    message: '',
+    onConfirm: () => {},
+  });
 
   const fetchSections = useCallback(async () => {
     setLoading(true);
@@ -82,15 +95,22 @@ export const AboutManager: React.FC = () => {
     await fetchSections();
   };
 
-  const handleDelete = async (id: string) => {
-    if (!window.confirm('¿Estás seguro de que deseas eliminar esta sección?')) return;
-    setError(null);
-    const res = await deleteAboutSection(id);
-    if (!res.success) {
-      setError(res.error ?? 'Error al eliminar sección');
-      return;
-    }
-    await fetchSections();
+  const handleDelete = (id: string) => {
+    setModalConfig({
+      title: 'Eliminar Sección',
+      message: '¿Estás seguro de que deseas eliminar esta sección?',
+      onConfirm: async () => {
+        setError(null);
+        const res = await deleteAboutSection(id);
+        if (!res.success) {
+          setError(res.error ?? 'Error al eliminar sección');
+        } else {
+          await fetchSections();
+        }
+        setModalOpen(false);
+      }
+    });
+    setModalOpen(true);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -184,6 +204,14 @@ export const AboutManager: React.FC = () => {
           )}
         </div>
       )}
+
+      <Modal95
+        isOpen={modalOpen}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onConfirm={modalConfig.onConfirm}
+        onCancel={() => setModalOpen(false)}
+      />
     </div>
   );
 };

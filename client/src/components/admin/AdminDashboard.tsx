@@ -6,9 +6,10 @@ import { Button95 } from '../win95/Button95';
 import { PortfolioManager } from './PortfolioManager';
 import { ServicesManager } from './ServicesManager';
 import { AboutManager } from './AboutManager';
+import { NewsletterManager } from './NewsletterManager';
 import styles from './AdminDashboard.module.css';
 
-type Section = 'portfolio' | 'servicios' | 'about';
+type Section = 'portfolio' | 'servicios' | 'about' | 'newsletter';
 
 export const AdminDashboard: React.FC = () => {
   const { logout } = useAuthContext();
@@ -53,6 +54,14 @@ export const AdminDashboard: React.FC = () => {
           >
             ℹ️ Sobre Nosotros
           </Button95>
+          <Button95
+            variant={activeSection === 'newsletter' ? 'default' : 'flat'}
+            size="sm"
+            onClick={() => setActiveSection('newsletter')}
+            className={activeSection === 'newsletter' ? styles.navButtonActive : styles.navButton}
+          >
+            📧 Newsletter
+          </Button95>
 
           <div className={styles.separator} />
           <div className={styles.spacer} />
@@ -71,6 +80,9 @@ export const AdminDashboard: React.FC = () => {
           )}
           {activeSection === 'about' && (
             <AboutManager />
+          )}
+          {activeSection === 'newsletter' && (
+            <NewsletterManager />
           )}
         </div>
       </Panel95>

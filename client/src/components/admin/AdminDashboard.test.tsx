@@ -36,6 +36,9 @@ vi.mock('../../services/api', () => ({
   createService: vi.fn(),
   updateService: vi.fn(),
   deleteService: vi.fn(),
+  getNewsletterEmails: vi.fn().mockResolvedValue({ success: true, data: [] }),
+  deleteNewsletterEmail: vi.fn(),
+  clearNewsletterEmails: vi.fn(),
 }));
 
 function renderDashboard() {
@@ -61,6 +64,7 @@ describe('AdminDashboard', () => {
     renderDashboard();
     expect(screen.getByRole('button', { name: /Portfolio/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Servicios/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Newsletter/i })).toBeInTheDocument();
   });
 
   it('renders the "Cerrar sesión" button', () => {
@@ -111,5 +115,14 @@ describe('AdminDashboard', () => {
     await waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith('/admin/');
     });
+  });
+
+  it('switches to Newsletter section when clicking Newsletter button', async () => {
+    renderDashboard();
+    fireEvent.click(screen.getByRole('button', { name: /Newsletter/i }));
+    await waitFor(() => {
+      expect(screen.getByText(/Suscriptores Newsletter/i)).toBeInTheDocument();
+    });
+    expect(screen.queryByText(/Proyectos de Portfolio/i)).not.toBeInTheDocument();
   });
 });

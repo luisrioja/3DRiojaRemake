@@ -1,8 +1,17 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Contact } from './Contact';
+import { subscribeToNewsletter } from '../../services/api';
+
+vi.mock('../../services/api', () => ({
+  subscribeToNewsletter: vi.fn(),
+}));
 
 describe('Contact', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it('renders the "Contacto" heading', () => {
     render(<Contact />);
     expect(
@@ -44,7 +53,8 @@ describe('Contact', () => {
     expect(screen.getByRole('button', { name: 'Enviar' })).toBeInTheDocument();
   });
 
-  it('shows success message on valid email submission', () => {
+  it('shows success message on valid email submission', async () => {
+    vi.mocked(subscribeToNewsletter).mockResolvedValue({ success: true, data: { id: '1', email: 'test@example.com', subscribedAt: '' } });
     render(<Contact />);
     const input = screen.getByLabelText('Correo electrónico');
     const button = screen.getByRole('button', { name: 'Enviar' });
@@ -52,10 +62,14 @@ describe('Contact', () => {
     fireEvent.change(input, { target: { value: 'test@example.com' } });
     fireEvent.click(button);
 
-    expect(screen.getByText('¡Gracias por suscribirte!')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('¡Gracias por suscribirte!')).toBeInTheDocument();
+    });
+    expect(subscribeToNewsletter).toHaveBeenCalledWith('test@example.com');
   });
 
-  it('clears the input after successful submission', () => {
+  it('clears the input after successful submission', async () => {
+    vi.mocked(subscribeToNewsletter).mockResolvedValue({ success: true, data: { id: '1', email: 'test@example.com', subscribedAt: '' } });
     render(<Contact />);
     const input = screen.getByLabelText('Correo electrónico');
     const button = screen.getByRole('button', { name: 'Enviar' });
@@ -63,7 +77,9 @@ describe('Contact', () => {
     fireEvent.change(input, { target: { value: 'test@example.com' } });
     fireEvent.click(button);
 
-    expect(input).toHaveValue('');
+    await waitFor(() => {
+      expect(input).toHaveValue('');
+    });
   });
 
   it('shows error message on invalid email submission', () => {

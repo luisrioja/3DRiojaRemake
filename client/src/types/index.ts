@@ -7,6 +7,12 @@ export interface PortfolioProject {
   updatedAt: string;
 }
 
+export interface NewsletterEmail {
+  id: string;
+  email: string;
+  subscribedAt: string;
+}
+
 export interface Service {
   id: string;
   title: string;

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Panel95 } from '../win95/Panel95';
 import { Button95 } from '../win95/Button95';
 import { getPortfolio, createProject, updateProject, deleteProject, uploadPortfolioImage } from '../../services/api';
+import { Modal95 } from '../win95/Modal95';
 import type { PortfolioProject } from '../../types';
 import styles from './PortfolioManager.module.css';
 
@@ -21,6 +22,18 @@ export const PortfolioManager: React.FC = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm);
   const [uploading, setUploading] = useState(false);
+
+  // Modal states
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalConfig, setModalConfig] = useState<{
+    title: string;
+    message: string;
+    onConfirm: () => void;
+  }>({
+    title: '',
+    message: '',
+    onConfirm: () => {},
+  });
 
   const fetchProjects = useCallback(async () => {
     setLoading(true);
@@ -78,15 +91,22 @@ export const PortfolioManager: React.FC = () => {
     await fetchProjects();
   };
 
-  const handleDelete = async (id: string) => {
-    if (!window.confirm('¿Estás seguro de que deseas eliminar este proyecto?')) return;
-    setError(null);
-    const res = await deleteProject(id);
-    if (!res.success) {
-      setError(res.error ?? 'Error al eliminar proyecto');
-      return;
-    }
-    await fetchProjects();
+  const handleDelete = (id: string) => {
+    setModalConfig({
+      title: 'Eliminar Proyecto',
+      message: '¿Estás seguro de que deseas eliminar este proyecto?',
+      onConfirm: async () => {
+        setError(null);
+        const res = await deleteProject(id);
+        if (!res.success) {
+          setError(res.error ?? 'Error al eliminar proyecto');
+        } else {
+          await fetchProjects();
+        }
+        setModalOpen(false);
+      }
+    });
+    setModalOpen(true);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -212,6 +232,14 @@ export const PortfolioManager: React.FC = () => {
           </tbody>
         </table>
       )}
+
+      <Modal95
+        isOpen={modalOpen}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onConfirm={modalConfig.onConfirm}
+        onCancel={() => setModalOpen(false)}
+      />
     </div>
   );
 };

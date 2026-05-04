@@ -1,4 +1,4 @@
-import type { ApiResponse, PortfolioProject, Service, Testimonial, AboutSection } from '../types';
+import type { ApiResponse, PortfolioProject, Service, Testimonial, AboutSection, NewsletterEmail } from '../types';
 
 const API_BASE = '/api';
 
@@ -162,4 +162,25 @@ export async function updateAboutSection(
 
 export async function deleteAboutSection(id: string): Promise<ApiResponse<void>> {
   return request<void>(`/about/${id}`, { method: 'DELETE' });
+}
+
+// --- Newsletter ---
+
+export async function subscribeToNewsletter(email: string): Promise<ApiResponse<NewsletterEmail>> {
+  return request<NewsletterEmail>('/newsletter', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+}
+
+export async function getNewsletterEmails(): Promise<ApiResponse<NewsletterEmail[]>> {
+  return request<NewsletterEmail[]>('/newsletter');
+}
+
+export async function deleteNewsletterEmail(id: string): Promise<ApiResponse<void>> {
+  return request<void>(`/newsletter/${id}`, { method: 'DELETE' });
+}
+
+export async function clearNewsletterEmails(): Promise<ApiResponse<void>> {
+  return request<void>('/newsletter', { method: 'DELETE' });
 }

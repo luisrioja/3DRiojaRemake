@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Panel95 } from '../win95/Panel95';
 import { Button95 } from '../win95/Button95';
 import { getServices, createService, updateService, deleteService } from '../../services/api';
+import { Modal95 } from '../win95/Modal95';
 import type { Service } from '../../types';
 import styles from './PortfolioManager.module.css';
 
@@ -20,6 +21,18 @@ export const ServicesManager: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm);
+
+  // Modal states
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalConfig, setModalConfig] = useState<{
+    title: string;
+    message: string;
+    onConfirm: () => void;
+  }>({
+    title: '',
+    message: '',
+    onConfirm: () => {},
+  });
 
   const fetchServices = useCallback(async () => {
     setLoading(true);
@@ -77,15 +90,22 @@ export const ServicesManager: React.FC = () => {
     await fetchServices();
   };
 
-  const handleDelete = async (id: string) => {
-    if (!window.confirm('¿Estás seguro de que deseas eliminar este servicio?')) return;
-    setError(null);
-    const res = await deleteService(id);
-    if (!res.success) {
-      setError(res.error ?? 'Error al eliminar servicio');
-      return;
-    }
-    await fetchServices();
+  const handleDelete = (id: string) => {
+    setModalConfig({
+      title: 'Eliminar Servicio',
+      message: '¿Estás seguro de que deseas eliminar este servicio?',
+      onConfirm: async () => {
+        setError(null);
+        const res = await deleteService(id);
+        if (!res.success) {
+          setError(res.error ?? 'Error al eliminar servicio');
+        } else {
+          await fetchServices();
+        }
+        setModalOpen(false);
+      }
+    });
+    setModalOpen(true);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -180,6 +200,14 @@ export const ServicesManager: React.FC = () => {
           </tbody>
         </table>
       )}
+
+      <Modal95
+        isOpen={modalOpen}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onConfirm={modalConfig.onConfirm}
+        onCancel={() => setModalOpen(false)}
+      />
     </div>
   );
 };

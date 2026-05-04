@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Panel95 } from '../win95/Panel95';
 import { Button95 } from '../win95/Button95';
+import { subscribeToNewsletter } from '../../services/api';
 import styles from './Contact.module.css';
 
 /** Simple inline email validation (full isValidEmail in task 8.10) */
@@ -15,13 +16,21 @@ function validateEmail(email: string): boolean {
 
 export const Contact: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateEmail(email)) {
-      setMessage({ type: 'success', text: '¡Gracias por suscribirte!' });
-      setEmail('');
+      setLoading(true);
+      const res = await subscribeToNewsletter(email);
+      if (res.success) {
+        setMessage({ type: 'success', text: '¡Gracias por suscribirte!' });
+        setEmail('');
+      } else {
+        setMessage({ type: 'error', text: res.error ?? 'Error al suscribirse' });
+      }
+      setLoading(false);
     } else {
       setMessage({ type: 'error', text: 'El formato de correo electrónico es incorrecto' });
     }
@@ -73,7 +82,7 @@ export const Contact: React.FC = () => {
       </Panel95>
 
       <Panel95 variant="raised" className={styles.subsection}>
-        <h3 className={styles.subheading}>Suscríbete</h3>
+        <h3 className={styles.subheading}>Suscríbete a nuestra newsletter</h3>
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputRow}>
             <input
@@ -81,13 +90,16 @@ export const Contact: React.FC = () => {
               className={styles.emailInput}
               placeholder="tu@email.com"
               value={email}
+              disabled={loading}
               onChange={(e) => {
                 setEmail(e.target.value);
                 setMessage(null);
               }}
               aria-label="Correo electrónico"
             />
-            <Button95 type="submit">Enviar</Button95>
+            <Button95 type="submit" disabled={loading}>
+              {loading ? '...' : 'Enviar'}
+            </Button95>
           </div>
           {message && (
             <p className={message.type === 'success' ? styles.successMessage : styles.errorMessage}>
